@@ -1,0 +1,61 @@
+/* Order Section */
+.order-section {
+  background-color: #f4f4f8; /* Couleur de fond plus douce */
+}
+
+.title-color{
+  color: #6262e1cc;
+}
+
+.table-responsive {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+/* Modern Table */
+.modern-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  font-family: 'Poppins', sans-serif; /* Police moderne */
+}
+
+
+
+.modern-table th, .modern-table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.modern-table th {
+  font-size: 1rem;
+  color: #096bcecc;
+}
+
+.modern-table td {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+
+.modern-table td:last-child {
+  font-weight: bold;
+}
+
+.canceled {
+  color: #e63946;
+  background-color: rgba(230, 57, 70, 0.1);
+  padding: 6px;
+  border-radius: 5px;
+}
+
+.completed {
+  color: #2a9d8f;
+  background-color: rgba(42, 157, 143, 0.1);
+  padding: 6px;
+  border-radius: 5px;
+}
+

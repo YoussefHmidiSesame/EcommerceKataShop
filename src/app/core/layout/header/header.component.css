@@ -1,0 +1,44 @@
+/* Navbar */
+.navbar {
+  background-color: #6262e1 !important;
+}
+/* Make navbar sticky */
+.sticky-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+::marker{
+  color: #6262e1;
+}
+
+/* cart style section*/
+.cart-popup {
+  position: absolute;
+  right: 13px;
+  top: 60px;
+  min-width: 300px; /* Adjust width as needed */
+  padding: 1rem; /* Add padding for better spacing */
+}
+
+/*card popup item image style*/
+.product-image {
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+}
+
+/*need to check and adjust*/
+.navbar .navbar-brand,
+.navbar .nav-link {
+  color: white !important;
+}
+
+.navbar .user-icon {
+  color: #202122;
+}
+
+.cart-icon {
+  color: white;
+}

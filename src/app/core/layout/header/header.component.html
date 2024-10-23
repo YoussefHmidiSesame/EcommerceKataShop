@@ -1,0 +1,270 @@
+<!-- Navbar -->
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-body-tertiary sticky-navbar">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      data-mdb-collapse-init
+      class="navbar-toggler"
+      type="button"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fa fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-lg-0 text-white" [routerLink]="['/home']">
+        E-commerce App
+      </a>
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-white">
+        <li class="nav-item">
+          <a class="nav-link text-white" [routerLink]="['/products-list']" >Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" [routerLink]="['/my-orders']">orders</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" [routerLink]="['/contact']">Contact</a>
+        </li>
+      </ul>
+      <li class="nav-item dropdown">
+        <a class="mx-2">
+          <i class="fa fa-user fs-5 me-1"></i>
+        </a>
+        <ul
+          class="dropdown-menu"
+          aria-labelledby="navbarDropdown"
+        >
+          <li>
+            <div class="d-flex justify-content-evenly mt-2">
+              <a
+                href="#"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight"
+              >
+                <button class="btn btn-danger rounded-0 px-3">Login</button></a
+              >
+              <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button class="btn btn-danger rounded-0 px-3">
+                  Register
+                </button></a
+              >
+            </div>
+          </li>
+        </ul>
+      </li>
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+
+    <!-- Right elements -->
+    <div class="d-flex align-items-center">
+      <ng-container *ngIf="loggedUserData; else loginButtons">
+        <button class="btn btn-primary btn-sm">{{ loggedUserData.name }}</button>
+        <button class="btn btn-warning mx-2" (click)="logOut()">Log Out</button>
+      </ng-container>
+      <ng-template #loginButtons>
+        <button class="btn btn-success" (click)="openLoginModelPopup()">Login</button>
+        <button class="btn btn-success mx-2" (click)="openRegisterModelPopup()">Register</button>
+      </ng-template>
+
+      <a class="link-secondary me-3">
+        <i
+          class="fa fa-shopping-cart text-white"
+          (click)="showAddCartPopup()"
+        ></i>
+      </a>
+      <!-- the add cart popup html -->
+      <div
+        [className]="
+          isCartPopupOpen
+            ? 'dropdown-menu dropdown-menu-end show cart-popup'
+            : 'dropdown-menu dropdown-menu-end hide cart-popup'
+        "
+        aria-labelledby="navbarDropdownMenuAvatar"
+      >
+        <div class="row">
+          <div class="col-8">
+            <h6>Cart Items</h6>
+          </div>
+          <div class="col-4 text-end">
+            <i class="fa fa-close p-2" (click)="showAddCartPopup()"></i>
+          </div>
+        </div>
+
+        <table class="table table-sm" *ngIf="cartData$ | async as cartData;">
+          <tbody>
+            <!--Iteration of cartData-->
+            @for ( item of cartData; track $index){
+              <tr>
+                <td>
+                  <div class="product-image" [style.backgroundImage]="'url(' + item.productImageUrl + ')'">
+                  </div>
+
+                </td>
+                <td class="align-middle text-left">{{ item.productName }}</td>
+                <td class="align-middle text-center">
+                  {{ item.quantity }} pieces
+                </td>
+                <td class="align-middle text-right">{{ item.productPrice }}</td>
+                <td class="align-middle text-center">
+                  <a
+                    (click)="onRemoveProductFromCard(item.cartId)"
+                    data-toggle="modal"
+                    data-title="Delete your product ?"
+                  >
+                    <i class="fa fa-trash"></i>
+                  </a>
+                </td>
+              </tr>
+
+            }
+
+          </tbody>
+        </table>
+        <div class="row">
+          <div class="col-12 text-end">
+            <button class="btn btn-sm btn-primary mx-2" (click)="isCartPopupOpen = false" [routerLink]="['/pass-order']" routerLinkActive="router-link-active" > Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- Navbar -->
+
+<!-- The Modal of bootstrap 5 that i will use for the registration when we click on register -->
+<div class="modal fade show d-block" id="myModal" *ngIf="isRegisterModalOpen" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Register</h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          (click)="closeRegisterModelPopup()"
+        ></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <label for="Name">Name</label>
+            <input
+              type="text"
+              [(ngModel)]="registerObj.name"
+              class="form-control"
+            />
+          </div>
+          <div class="col-12">
+            <label for="">Mobile Number</label>
+            <input
+              type="text"
+              [(ngModel)]="registerObj.MobileNo"
+              class="form-control"
+            />
+          </div>
+          <div class="col-12">
+            <label for="">Password</label>
+            <input
+              type="text"
+              [(ngModel)]="registerObj.Password"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="closeRegisterModelPopup()"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="onRegister()"
+        >
+          Register
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- The Modal of bootstrap 5 that i will use for the Login when we click on login -->
+<div class="modal fade show d-block" id="myModal" *ngIf="isLoginModalOpen" #loginModel>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Login</h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          (click)="closeLoginModelPopup()"
+        ></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <label for="Name">Name</label>
+            <input
+              type="text"
+              [(ngModel)]="loginObj.UserName"
+              class="form-control"
+            />
+          </div>
+          <div class="col-12">
+            <label for="">Password</label>
+            <input
+              type="text"
+              [(ngModel)]="loginObj.UserPassword"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="closeLoginModelPopup()"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="onLogin()"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

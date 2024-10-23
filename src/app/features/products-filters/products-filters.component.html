@@ -1,0 +1,34 @@
+<!-- Sorting Options -->
+
+  <div class="sorting-options">
+    <h4 class="mb-3">Sort by Price</h4>
+    <div class="d-flex flex-column gap-2">
+      <button class="btn btn-primary btn-lg" (click)="sortByPrice('asc')">
+        Price: Low to High
+      </button>
+      <button
+        class="btn btn-primary btn-lg"
+        (click)="sortByPrice('desc')"
+      >
+        Price: High to Low
+      </button>
+    </div>
+  </div>
+  <br />
+
+  <!-- Categories Sidebar -->
+  <div>
+    <h4 class="mb-4">Categories</h4>
+    <div class="list-group">
+      <!-- Category Buttons -->
+      @for (item of categoryList(); track $index) {
+      <button
+        class="list-group-item list-group-item-action category-btn"
+        (click)="getProductByCategoryId(item.categoryId)"
+      >
+        {{ item.categoryName }}
+      </button>
+      }
+    </div>
+  </div>
+

@@ -1,0 +1,37 @@
+/* Contact Section */
+.contact-section {
+  background-color: #ffffff; /* Background color for the contact section */
+}
+
+.contact-section h2 {
+  color: #6262e1; /* Use your primary color */
+}
+
+.contact-section .form-control {
+  border-radius: 5px; /* Rounded input fields */
+  border: 1px solid #ccc;
+  transition: border-color 0.3s;
+}
+
+.contact-section .form-control:focus {
+  border-color: #6262e1; /* Change border color on focus */
+}
+
+.contact-section .btn-primary {
+  background-color: #6262e1; /* Primary button color */
+  border: none;
+}
+
+.contact-section .btn-primary:hover {
+  background-color: #5146c2; /* Darker shade on hover */
+}
+
+.map-container {
+  margin-top: 30px;
+  border-radius: 8px; /* Rounded corners for the map */
+  overflow: hidden; /* Hide overflow for a clean look */
+}
+
+.map-container iframe {
+  border: none; /* Remove iframe border */
+}

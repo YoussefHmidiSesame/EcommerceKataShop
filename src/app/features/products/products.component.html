@@ -1,0 +1,45 @@
+<div *ngIf="isLoading(); else productList">
+  <p>Loading products...</p> <!-- Or use a spinner -->
+</div>
+<!-- Products Section -->
+<section class="products-section py-5">
+  <ng-template #productList>
+     <!-- Products Grid -->
+     <div class="row g-4">
+      @for(item of productList$ | async ; track $index){
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div
+            class="card product-card border-0 shadow-sm h-100 custom-card-bg"
+          >
+            <div class="position-relative">
+              <img
+                [src]="item.productImageUrl"
+                class="card-img-top product-image"
+                alt="{{ item.productName }}"
+              />
+              <span
+                class="category-badge position-absolute top-0 start-0 p-2 bg-primary text-white rounded-end"
+              >
+                {{ item.categoryName }}
+              </span>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title product-title">
+                {{ item.productName }}
+              </h5>
+              <p class="product-price text-secondary mb-3">
+                {{ item.productPrice }}
+              </p>
+              <button
+                class="btn btn-primary mt-auto add-to-cart-btn custom-btn-bg-card"
+                (click)="onAddToCart(item.productId)"
+              >
+                <i class="fa fa-cart-plus me-2"></i>Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </ng-template>
+</section>

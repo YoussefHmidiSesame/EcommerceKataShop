@@ -1,0 +1,35 @@
+<section class="order-section py-5">
+  <div class="container">
+    <h2 class="font-weight-bold text-center mb-4 title-color">Your Orders</h2>
+    <div class="table-responsive">
+      <table class="table modern-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Total Amount</th>
+            <th>Delivery Address</th>
+            <th>City</th>
+            <th>Postal Code</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(order of orders$ | async; track order.saleId ){
+            <tr>
+              <td>{{ order.saleDate | date: 'medium' }}</td>
+              <td>{{ order.totalInvoiceAmount | currency }}</td>
+              <td>{{ order.deliveryAddress1 }}</td>
+              <td>{{ order.deliveryCity }}</td>
+              <td>{{ order.deliveryPinCode }}</td>
+              <td [ngClass]="{'canceled': order.isCanceled, 'completed': !order.isCanceled}">
+                {{ order.isCanceled ? 'Canceled' : 'Completed' }}
+              </td>
+            </tr>
+
+          }
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
