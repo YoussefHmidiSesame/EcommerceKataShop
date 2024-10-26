@@ -103,7 +103,7 @@
         <table class="table table-sm" *ngIf="cartData$ | async as cartData;">
           <tbody>
             <!--Iteration of cartData-->
-            @for ( item of cartData; track $index){
+            @for ( item of cartData; track item.cartId){
               <tr>
                 <td>
                   <div class="product-image" [style.backgroundImage]="'url(' + item.productImageUrl + ')'">

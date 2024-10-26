@@ -21,7 +21,7 @@
     <h4 class="mb-4">Categories</h4>
     <div class="list-group">
       <!-- Category Buttons -->
-      @for (item of categoryList(); track $index) {
+      @for (item of categoryList(); track item.categoryId) {
       <button
         class="list-group-item list-group-item-action category-btn"
         (click)="getProductByCategoryId(item.categoryId)"

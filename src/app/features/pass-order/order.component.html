@@ -56,7 +56,7 @@
           <h4>Your Order</h4>
         </div>
         <div class="card-body">
-          @for (item of cartData$(); track $index) {
+          @for (item of cartData$(); track item.cartId) {
             <div class="border-top d-flex mt-2">
               <img
                 class="img-fluid h-25 w-25 p-2"
