@@ -6,6 +6,7 @@ import { OrderListComponent } from './features/orders-list/order-list.component'
 import { ContactComponent } from './features/contact/contact.component';
 import { HomeComponent } from './core/layout/home/home.component';
 import { ContainerProductsComponent } from './features/products/container/container.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -20,15 +21,18 @@ export const routes: Routes = [
   },
   {
     path :'products-list',
-    component : ContainerProductsComponent
+    component : ContainerProductsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path : 'pass-order',
-    component : OrderComponent
+    component : OrderComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'my-orders',
-    component : OrderListComponent
+    component : OrderListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'contact',

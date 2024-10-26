@@ -36,6 +36,11 @@ export class AuthService {
     return this.loggedUserData();
   }
 
+  // Method to check if user is logged in
+  isLoggedIn(): boolean {
+    return this.loggedUserData() !== null;
+  }
+
   // Method to log out the user
   logOut(): void {
     localStorage.removeItem(LoginData.LOCAL_KEY);
