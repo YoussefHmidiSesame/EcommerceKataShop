@@ -1,4 +1,4 @@
-import { LoadingService } from './../../core/services/loading-service/loading.service.service';
+import { LoadingService } from '../../core/services/loading-service/loading.service.service';
 import { Component, inject, OnInit } from '@angular/core';
 
 import { AsyncPipe, CommonModule } from '@angular/common';

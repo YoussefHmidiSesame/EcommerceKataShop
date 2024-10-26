@@ -1,9 +1,9 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
-import { MasterService } from '../../core/services/master-service/master.service';
+import { MasterService } from '../../../../core/services/master-service/master.service';
 import { map, Observable, Subscription } from 'rxjs';
-import { ProductList } from '../../shared/models/ProductList';
-import { Category } from '../../shared/models/Category';
+import { ProductList } from '../../../../shared/models/ProductList';
+import { Category } from '../../../../shared/models/Category';
 
 
 

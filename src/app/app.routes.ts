@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { ProductsListComponent } from './features/products-list/products-list.component';
-import { OrderComponent } from './features/order/order.component';
+import { OrderComponent } from './features/pass-order/order.component';
 
-import { ProductsComponent } from './features/products/products.component';
-import { OrderListComponent } from './features/order-list/order-list.component';
+import { ProductsComponent } from './features/products/components/products/products.component';
+import { OrderListComponent } from './features/orders-list/order-list.component';
 import { ContactComponent } from './features/contact/contact.component';
 import { HomeComponent } from './core/layout/home/home.component';
+import { ContainerProductsComponent } from './features/products/container/container.component';
 
 export const routes: Routes = [
   {
@@ -20,7 +20,7 @@ export const routes: Routes = [
   },
   {
     path :'products-list',
-    component : ProductsListComponent
+    component : ContainerProductsComponent
   },
   {
     path : 'pass-order',

@@ -1,13 +1,13 @@
 import { map, Observable, Subscription, tap } from 'rxjs';
-import { MasterService } from '../../core/services/master-service/master.service';
+import { MasterService } from '../../../../core/services/master-service/master.service';
 import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
-import { ProductList } from '../../shared/models/ProductList';
-import { ApiResponseModel } from '../../shared/models/ApiResponseModel';
-import { CartModel } from '../../shared/models/CartModel';
+import { ProductList } from '../../../../shared/models/ProductList';
+import { ApiResponseModel } from '../../../../shared/models/ApiResponseModel';
+import { CartModel } from '../../../../shared/models/CartModel';
 import { AsyncPipe, CommonModule } from '@angular/common';
-import { AuthService } from '../../core/auth/auth.service';
+import { AuthService } from '../../../../core/auth/auth.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { LoadingService } from '../../core/services/loading-service/loading.service.service';
+import { LoadingService } from '../../../../core/services/loading-service/loading.service.service';
 
 @Component({
   selector: 'app-products',
