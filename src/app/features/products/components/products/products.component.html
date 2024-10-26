@@ -1,12 +1,13 @@
 <div *ngIf="isLoading(); else productList">
-  <p>Loading products...</p> <!-- Or use a spinner -->
+  <p>Loading products...</p>
+  <!-- Or use a spinner -->
 </div>
 <!-- Products Section -->
 <section class="products-section py-5">
   <ng-template #productList>
-     <!-- Products Grid -->
-     <div class="row g-4">
-      @for(item of productList$ | async ; track item.productId){
+    <!-- Products Grid -->
+    <div class="row g-4">
+      @for (item of productList$ | async; track item.productId) {
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div
             class="card product-card border-0 shadow-sm h-100 custom-card-bg"
@@ -35,6 +36,12 @@
                 (click)="onAddToCart(item.productId)"
               >
                 <i class="fa fa-cart-plus me-2"></i>Add to Cart
+              </button>
+              <button
+                class="btn btn-outline-secondary mt-2 view-details-btn custom-btn-bg-card"
+                (click)="onViewDetails(item)"
+              >
+                <i class="fa fa-info-circle me-2"></i>View Details
               </button>
             </div>
           </div>

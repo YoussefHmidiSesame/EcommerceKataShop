@@ -1,0 +1,63 @@
+.modal-content {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 450px;
+  margin: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #f8f9fa;
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  padding: 1rem;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.close-btn {
+  position: absolute;
+  right: 1rem;
+  top: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #999;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 0 0 12px 12px;
+}
+
+.product-image {
+  width: 100%;
+  border-radius: 8px;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.product-price,
+.product-category {
+  font-size: 1rem;
+  color: #555;
+  margin: 0.5rem 0;
+}
+
+.product-description {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 1rem;
+  line-height: 1.4;
+  padding: 0 1rem;
+  font-style: italic;
+}

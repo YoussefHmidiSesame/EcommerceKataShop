@@ -37,6 +37,17 @@
   transition: background-color 0.2s;
 }
 
+.view-details-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
 .add-to-cart-btn:hover {
   background-color: #0056b3; /* Darker blue on hover */
 }

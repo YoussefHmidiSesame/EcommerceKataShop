@@ -1,18 +1,20 @@
 import { map, Observable, Subscription, tap } from 'rxjs';
 import { MasterService } from '../../../../core/services/master-service/master.service';
 import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
-import { ProductList } from '../../../../shared/models/ProductList';
+import { Product } from '../../../../shared/models/Product';
 import { ApiResponseModel } from '../../../../shared/models/ApiResponseModel';
 import { CartModel } from '../../../../shared/models/CartModel';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { AuthService } from '../../../../core/auth/auth.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { LoadingService } from '../../../../core/services/loading-service/loading.service.service';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ProductDetailsComponent } from '../product-details/product-details.component';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [AsyncPipe, CommonModule, MatSnackBarModule],
+  imports: [AsyncPipe, CommonModule, MatSnackBarModule,MatDialogModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
@@ -21,9 +23,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
   masterService = inject(MasterService);
   authService = inject(AuthService); // Inject AuthService
   isLoading = signal<boolean>(false);
+  dialog = inject(MatDialog);
 
   //new way of using signals
-  productList$: Observable<ProductList[]> = new Observable();
+  productList$: Observable<Product[]> = new Observable();
   subscriptionList: Subscription[] = [];
   snackBar = inject(MatSnackBar); // Inject MatSnackBar
   loadingService = inject(LoadingService); // Inject LoadingService
@@ -105,6 +108,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
       } else {
         this.snackBar.open(res.message, 'Close', { duration: 3000 }); // Toast on error
       }
+    });
+  }
+
+  // Method to open modal with product details
+  onViewDetails(product: Product): void {
+    this.dialog.open(ProductDetailsComponent, {
+      width: '300px',
+      data: product,
     });
   }
 

@@ -1,0 +1,11 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title text-center w-100">{{ product.productName }}</h5>
+  </div>
+  <div class="modal-body text-center">
+    <img [src]="product.productImageUrl" class="product-image mb-3" alt="{{ product.productName }}" />
+    <p class="product-price"><strong>Price:</strong> ${{ product.productPrice }}</p>
+    <p class="product-category"><strong>Category:</strong> {{ product.categoryName }}</p>
+    <p class="product-description">{{ product.productDescription }}</p>
+  </div>
+</div>

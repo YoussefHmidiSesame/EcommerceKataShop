@@ -2,7 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { MasterService } from '../../../../core/services/master-service/master.service';
 import { map, Observable, Subscription } from 'rxjs';
-import { ProductList } from '../../../../shared/models/ProductList';
+import { Product } from '../../../../shared/models/Product';
 import { Category } from '../../../../shared/models/Category';
 
 
@@ -16,7 +16,7 @@ import { Category } from '../../../../shared/models/Category';
 })
 export class ProductsFiltersComponent implements OnInit {
   masterService = inject(MasterService);
-  productList = signal<ProductList[]>([]); // Signal for the product list
+  productList = signal<Product[]>([]); // Signal for the product list
   categoryList = signal<Category[]>([]);  // Signal to hold the category list
   private categorySubscription!: Subscription;
 

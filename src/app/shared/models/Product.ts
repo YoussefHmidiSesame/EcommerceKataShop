@@ -1,4 +1,4 @@
-export interface ProductList {
+export interface Product {
   productId: number;
   productSku: string;
   productName: string;
